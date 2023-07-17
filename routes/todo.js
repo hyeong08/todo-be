@@ -9,7 +9,6 @@ router.get('/incom', async (req, res) => {
   try {
     const posts = await Posts.findAll({
       where: { isDone: false },
-      attributes: ['postId', 'title', 'content', 'updatedAt'],
     });
     res.status(200).json({ todo: posts });
   } catch (err) {
@@ -22,7 +21,6 @@ router.get('/com', async (req, res) => {
   try {
     const posts = await Posts.findAll({
       where: { isDone: true },
-      attributes: ['postId', 'title', 'content', 'updatedAt'],
     });
     res.status(200).json({ todo: posts });
   } catch (err) {
@@ -37,7 +35,6 @@ router.get('/com/:postId', async (req, res) => {
 
     const post = await Posts.findOne({
       where: { postId, isDone: true },
-      attributes: ['postId', 'title', 'content', 'updatedAt'],
     });
 
     if (post) {
@@ -54,10 +51,8 @@ router.get('/com/:postId', async (req, res) => {
 router.get('/incom/:postId', async (req, res) => {
   try {
     const { postId } = req.params;
-
     const post = await Posts.findOne({
       where: { postId, isDone: false },
-      attributes: ['postId', 'title', 'content', 'updatedAt'],
     });
 
     if (post) {
@@ -89,7 +84,6 @@ router.post('', async (req, res) => {
 router.patch('/:postId', async (req, res) => {
   try {
     const { postId } = req.params;
-
     const post = await Posts.findOne({ where: { postId } });
 
     if (post) {
