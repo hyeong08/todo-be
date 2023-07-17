@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('', async (req, res) => {
   try {
     const posts = await Posts.findAll({
-      attributes: { exclude: ['content', 'isDone', 'image'] },
+      attributes: { exclude: ['content'] },
     });
     res.status(200).json({ todo: posts });
   } catch (err) {
