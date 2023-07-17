@@ -12,20 +12,40 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 18.x
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 18.x
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
+#     - run: npm run build --if-present
+#     - run: npm test
 
+    - name: zip file
+      run: zip -r CI.zip ./app.js ./config ./migrations ./models ./routes ./scripts ./appspec.yml ./package.json ./package-lock.json
+
+    - name: AWS configure credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_PRIVATE_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+
+    - name: upload to S3
+      run: aws s3 cp --region ap-northeast-2 ./CI.zip s3://todo-cicd-bucket/deploy/
+
+    - name: deploy with AWS codeDeploy
+      run: aws deploy create-deployment
+        --application-name todo-codedeploy-app
+        --deployment-config-name CodeDeployDefault.OneAtATime
+        --deployment-group-name todo-codedepoly-deployment-group
+        --s3-location bucket=hanghaemini,bundleType=zip,key=deploy/CI.zip
