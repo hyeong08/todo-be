@@ -40,7 +40,7 @@ router.get('/com/:postId', async (req, res) => {
             where: { postId, isDone: true },
             attributes: ["postId", "title", "content", "updatedAt"],
         });
-
+        
         if (post) {
             res.status(200).json({ todo: post });
         } else {
@@ -101,6 +101,7 @@ router.patch('/:postId', async (req, res) => {
         res.status(400).json({ errMSG: "업데이트 실패" });
     }
 });
+
 //// 2페이지
 
 // TO-DO List 미완료 상세 수정
