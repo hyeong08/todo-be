@@ -12,7 +12,7 @@ router.get('', async (req, res) => {
     });
     res.status(200).json({ data: posts });
   } catch (err) {
-    res.status(400).json({ errorMessage: '조회 실패' });
+    res.status(400).json({ errorMessage: '조회 실패!' });
   }
 });
 
