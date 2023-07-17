@@ -48,4 +48,4 @@ jobs:
         --application-name todo-codedeploy-app
         --deployment-config-name CodeDeployDefault.OneAtATime
         --deployment-group-name todo-codedepoly-deployment-group
-        --s3-location bucket=hanghaemini,bundleType=zip,key=deploy/CI.zip
+        --s3-location bucket=todo-cicd-bucket,bundleType=zip,key=deploy/CI.zip
