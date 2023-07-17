@@ -2,41 +2,110 @@ const express = require('express');
 const { Posts } = require('../models');
 const router = express.Router();
 
-//// 1페이지
+//  1페이지
 
 // TO-DO List 미완료 목록 조회
-router.get('', async (req, res) => {
+router.get('/incom', async (req, res) => {
   try {
     const posts = await Posts.findAll({
-      attributes: { exclude: ['content'] },
+      where: { isDone: false },
+      attributes: ['postId', 'title', 'content', 'updatedAt'],
     });
     res.status(200).json({ todo: posts });
   } catch (err) {
-    res.status(400).json({ errorMessage: '조회 실패!' });
+    res.status(400).json({ errMSG: '조회 실패' });
   }
 });
 
 // TO-DO List 완료 목록 조회
-router.get('', async (req, res) => {});
+router.get('/com', async (req, res) => {
+  try {
+    const posts = await Posts.findAll({
+      where: { isDone: true },
+      attributes: ['postId', 'title', 'content', 'updatedAt'],
+    });
+    res.status(200).json({ todo: posts });
+  } catch (err) {
+    res.status(400).json({ errMSG: '조회 실패' });
+  }
+});
+
+// TO-DO List 완료 상세 목록 조회
+router.get('/com/:postId', async (req, res) => {
+  try {
+    const { postId } = req.params;
+
+    const post = await Posts.findOne({
+      where: { postId, isDone: true },
+      attributes: ['postId', 'title', 'content', 'updatedAt'],
+    });
+
+    if (post) {
+      res.status(200).json({ todo: post });
+    } else {
+      res.status(404).json({ errMSG: '해당 포스트를 찾을 수 없습니다.' });
+    }
+  } catch (err) {
+    res.status(400).json({ errMSG: '조회 실패' });
+  }
+});
+
+// TO-DO List 미완료 상세 목록 조회
+router.get('/incom/:postId', async (req, res) => {
+  try {
+    const { postId } = req.params;
+
+    const post = await Posts.findOne({
+      where: { postId, isDone: false },
+      attributes: ['postId', 'title', 'content', 'updatedAt'],
+    });
+
+    if (post) {
+      res.status(200).json({ todo: post });
+    } else {
+      res.status(404).json({ errMSG: '해당 포스트를 찾을 수 없습니다.' });
+    }
+  } catch (err) {
+    res.status(400).json({ errMSG: '조회 실패' });
+  }
+});
 
 // TO-DO List 작성
 router.post('', async (req, res) => {
   const { title, content } = req.body;
+
   try {
-    await Posts.create({ title, content });
-    res.status(201).json({ msg: '작성 완료!' });
+    await Posts.create({
+      title: title,
+      content: content,
+    });
+    res.status(201).json({ msg: '게시글 생성 성공' });
   } catch (err) {
-    res.status(400).json({ errorMessage: '작성 실패' });
+    res.status(400).json({ msg: '게시글 생성 실패' });
   }
 });
 
-// TO-DO List 미완료 상세 조회
-router.get('/:todoId', async (req, res) => {});
-
 // TO-DO List 완료
-router.put('/:todoId/isDone', async (req, res) => {});
+router.patch('/:postId', async (req, res) => {
+  try {
+    const { postId } = req.params;
 
-//// 2페이지
+    const post = await Posts.findOne({ where: { postId } });
+
+    if (post) {
+      post.isDone = true;
+      await post.save();
+
+      res.status(200).json({ success: true });
+    } else {
+      res.status(404).json({ errMSG: '해당 포스트를 찾을 수 없습니다.' });
+    }
+  } catch (err) {
+    res.status(400).json({ errMSG: '업데이트 실패' });
+  }
+});
+
+//? 2페이지
 
 // TO-DO List 미완료 상세 수정
 router.put('/:todoId', async (req, res) => {});
