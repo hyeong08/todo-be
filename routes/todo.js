@@ -24,7 +24,7 @@ router.post('', async (req, res) => {
   const { title, content } = req.body;
   try {
     await Posts.create({ title, content });
-    res.status(201).json({ msg: '작성 완료' });
+    res.status(201).json({ msg: '작성 완료!' });
   } catch (err) {
     res.status(400).json({ errorMessage: '작성 실패' });
   }
