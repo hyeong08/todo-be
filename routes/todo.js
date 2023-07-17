@@ -10,7 +10,7 @@ router.get('', async (req, res) => {
     const posts = await Posts.findAll({
       attributes: { exclude: ['content', 'isDone', 'image'] },
     });
-    res.status(200).json({ data: posts });
+    res.status(200).json({ todo: posts });
   } catch (err) {
     res.status(400).json({ errorMessage: '조회 실패!' });
   }
