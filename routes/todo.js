@@ -138,7 +138,7 @@ router.delete('/:postId', async (req, res) => {
 
 
 // 목록 수정 API (title과 content) 
-router.patch('/:postId', async (req, res) => {
+router.put('/:postId', async (req, res) => {
     try {
         const { postId } = req.params;
         const { title, content } = req.body;
