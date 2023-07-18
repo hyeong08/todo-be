@@ -138,9 +138,10 @@ router.delete('/:postId', async (req, res) => {
 
 
 // 목록 수정 API (title과 content) 
-router.put('/:postId', async (req, res) => {
+router.put('/incom/:postId', async (req, res) => {
     try {
         const { postId } = req.params;
+        console.log(postId)
         const { title, content } = req.body;
         const post = await Posts.findOne({ where: { postId } });
 
