@@ -9,17 +9,24 @@
   | :----: | :-------------: |
   | 김형섭 | CI/CD / HTTPS   |
   | 김대욱 | TO-DO List CRUD |
+- [Frontend-End] https://github.com/gunhoray/Daily-Frontend
 ### 개발 환경
 <div align="center">
 <p style="font-size:20px;">📚 Tech Stack 📚</p>
 <p>⭐ Platforms & Languages ⭐</p>
-	<img src="https://img.shields.io/badge/JavaScript-f7df1e?style=flat&logo=JavaScript&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-f7df1e?style=flat&logo=JavaScript&logoColor=white" />
   <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=Node.js&logoColor=white" />
-	<img src="https://img.shields.io/badge/.env-ecd53f?style=flat&logo=.env&logoColor=white" />
+  <img src="https://img.shields.io/badge/.env-ecd53f?style=flat&logo=.env&logoColor=white" />
   <img src="https://img.shields.io/badge/Express-000000?style=flat&logo=Express&logoColor=white" />
   <img src="https://img.shields.io/badge/MySQL-4479a1?style=flat&logo=.env&logoColor=white" />
-	<img src="https://img.shields.io/badge/Sequelize-52b0e7?style=flat&logo=Sequelize&logoColor=white" />
-	<img src="https://img.shields.io/badge/JSON-000000?style=flat&logo=JSON&logoColor=white" />
+  <img src="https://img.shields.io/badge/Sequelize-52b0e7?style=flat&logo=Sequelize&logoColor=white" />
+  <img src="https://img.shields.io/badge/JSON-000000?style=flat&logo=JSON&logoColor=white" />
+<br/>
+  <img src="https://img.shields.io/badge/Github Actions-2088FF?style=flat&logo=githubactions&logoColor=white" />
+  <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=flat&logo=githubactions&logoColor=white" />
+  <img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat&logo=githubactions&logoColor=white" />
+  <img src="https://img.shields.io/badge/NGINX-009639?style=flat&logo=githubactions&logoColor=white" />
+  <img src="https://img.shields.io/badge/Amazon RDS-527FFF?style=flat&logo=githubactions&logoColor=white" />
 <br/>
 <br/>
 <p>🛠 Tools 🛠</p>
