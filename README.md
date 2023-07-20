@@ -32,7 +32,7 @@
 <p>🛠 Tools 🛠</p>
 <img src="https://img.shields.io/badge/Visual Studio Code-007acc?style=flat&logo=Visual Studio Code&logoColor=white" />
 <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&181717=white" />
-<img src="https://img.shields.io/badge/slack-4a154b?style=flat&logo=slack&4a154b=white" />
+<img src="https://img.shields.io/badge/Slack-4a154b?style=flat&logo=slack&4a154b=white" />
 <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&4a154b=white" />
 </div>
 
