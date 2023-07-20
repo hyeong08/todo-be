@@ -38,7 +38,7 @@
 
 ### 시연 영상
 
-[유튜브 시연영상] (https://youtu.be/vG5H-wJiYEE)
+[유튜브 시연영상] https://youtu.be/vG5H-wJiYEE
 
 ### API
 
