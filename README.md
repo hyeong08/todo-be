@@ -40,6 +40,6 @@
 
 [유튜브 시연영상] https://youtu.be/vG5H-wJiYEE
 
-### API
+### API 명세서
 
 <img src="api.png" style="width:100%" />
